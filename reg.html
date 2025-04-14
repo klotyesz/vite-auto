@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bejelentkezés</title>
+    <link rel="stylesheet" href="src/loginreg.css">
+    <script type="module" src="src/main.js"></script>
+</head>
+<body>
+        
+    <p><a href="index.html">Főoldal!</a></p>
+    <div class="login-container">
+        <h2>Bejelentkezés</h2>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="username">Felhasználónév</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email cím</label>
+                <input type="text" id="emailaddress" name="emailaddress" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Jelszó</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Jelszó újra</label>
+                <input type="password" id="rePassword" name="rePassword" required>
+            </div>
+                <button type="submit" class="login-btn">Regisztráció</button>
+        </form>
+        <div class="signup-link">
+            <p>Van már fiókod? <a href="login.html">Jelentkezz be!</a></p>
+        </div>
+    </div>
+</body>
+</html>
