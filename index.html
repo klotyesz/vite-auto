@@ -7,6 +7,23 @@
   <title>Autókereskedő oldal</title>
   <link rel="stylesheet" href="src/style.css">
   <script type="module" src="src/main.js"></script>
+  <style>
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
 </head>
 
 <body>
@@ -22,8 +39,7 @@
     </nav>
   </header>
   <section>
-    <h1>Üdvözöljük autókereskedésünk weboldalán!</h1>
-    <div id="app"></div>
+    <div id="adatmegjelenites"></div>
   </section>
   <footer>
     <p>&copy; 2025 Autókereskedés</p>
