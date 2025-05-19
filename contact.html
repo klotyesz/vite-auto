@@ -1,28 +1,206 @@
 <!DOCTYPE html>
 <html lang="hu">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autókereskedő oldal</title>
-  <link rel="stylesheet" href="src/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutóPont - Autókereskedés és Szerviz</title>
+  <link rel="stylesheet" href="src/style.css" />
   <script type="module" src="src/main.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --black: #111;
+      --dark-gray: #333;
+      --light-gray: #f5f5f5;
+      --yellow: #FFD700;
+      --white: #fff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--black);
+    }
+
+    
+    header {
+      background: var(--black);
+      padding: 1rem 2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0 1rem;
+    }
+
+    nav ul li a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: var(--yellow);
+    }
+
+    .login a {
+      background-color: var(--yellow);
+      color: var(--black);
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .login a:hover {
+      background-color: #e6c200;
+    }
+
+    
+    .hero {
+      background-color: var(--black);
+      background-image: url('src/output.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100vw;
+      min-height: 60vh;
+      color: var(--black);
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      position: relative;
+      left: 0;
+      right: 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+      color: #000000;
+    }
+
+    
+    section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--dark-gray);
+      margin-bottom: 1.5rem;
+      border-left: 6px solid var(--yellow);
+      padding-left: 12px;
+    }
+
+    #adatmegjelenites {
+      margin-top: 2rem;
+    }
+
+    
+    footer {
+      background: var(--dark-gray);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    
     table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
     }
 
-    td, th {
-      border: 1px solid #dddddd;
+    th, td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #eee;
       text-align: left;
-      padding: 8px;
     }
 
-    tr:nth-child(even) {
-      background-color: #dddddd;
+    th {
+      background-color: var(--yellow);
+      color: var(--black);
+      font-weight: 700;
     }
+
+    tr:nth-child(even) td {
+      background-color: #fafafa;
+    }
+
+    tr:hover td {
+      background-color: #f0f0f0;
+    }
+
+    @media (max-width: 700px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      th, td {
+        padding: 12px;
+      }
+    }
+    table button {
+      background-color: var(--yellow);
+      color: var(--black);
+      border: none;
+      padding: 8px 14px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    table button:hover {
+      background-color: var(--black);
+      color: var(--yellow);
+    }
+
   </style>
 </head>
 
@@ -38,13 +216,18 @@
       </ul>
     </nav>
   </header>
+
+
+
+  <section>
     <div id="terkep" style="display: flex; justify-content: center; align-items: center;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9327.47852979301!2d19.423889422703986!3d47.526295272553966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741b0a200716e43%3A0x2f29e57609b987c5!2sGearbox%20Hungary%20kft!5e0!3m2!1shu!2shu!4v1747054847961!5m2!1shu!2shu" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
+  </section>
+
   <footer>
-    <p>&copy; 2025 Autókereskedés</p>
+    <p>&copy; 2025 AutóPont | Minden jog fenntartva | Autókereskedés & Szerviz</p>
   </footer>
 </body>
-
 </html>
