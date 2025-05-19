@@ -1,3 +1,5 @@
+const rendezesIrany = {}; // minden mezőhöz nyomon követjük
+
 const loading = async () => {
   const response = await fetch("https://retoolapi.dev/U0LyEZ/data");
   if (!response.ok) {
@@ -7,17 +9,38 @@ const loading = async () => {
   return json;
 };
 
+let aktualisAdatok = [];
+
 const lista = (datas) => {
   document.getElementById("adatmegjelenites").innerText = "";
   const tablazat = document.createElement("table");
   const thead = document.createElement("thead");
   const headerRow = document.createElement("tr");
 
-  const headerNames = ["Márka", "Évjárat", "Teljesítmény (HP)", "Üzemanyag", "Ár ($)", "Állapot", "Váltó", "Meghajtás", "Törlés"];
+  const oszlopok = [
+    { label: "Márka", key: "carbrand" },
+    { label: "Évjárat", key: "year" },
+    { label: "Teljesítmény (HP)", key: "hp" },
+    { label: "Üzemanyag", key: "fuel" },
+    { label: "Ár ($)", key: "price" },
+    { label: "Állapot", key: "condition" },
+    { label: "Váltó", key: "shift" },
+    { label: "Meghajtás", key: "dif" }
+    //{ label: "Törlés", key: null }
+  ];
 
-  headerNames.forEach(name => {
+  oszlopok.forEach(({ label, key }) => {
     const th = document.createElement("th");
-    th.textContent = name;
+
+    if (key) {
+      const button = document.createElement("button");
+      button.textContent = label;
+      button.addEventListener("click", () => rendezes(key));
+      th.appendChild(button);
+    } else {
+      th.textContent = label;
+    }
+
     headerRow.appendChild(th);
   });
 
@@ -28,37 +51,12 @@ const lista = (datas) => {
   datas.forEach(data => {
     const tr = document.createElement("tr");
 
-    const tdBrand = document.createElement("td");
-    tdBrand.textContent = data.carbrand;
-    tr.appendChild(tdBrand);
-
-    const tdYear = document.createElement("td");
-    tdYear.textContent = data.year;
-    tr.appendChild(tdYear);
-
-    const tdHP = document.createElement("td");
-    tdHP.textContent = data.hp;
-    tr.appendChild(tdHP);
-
-    const tdFuel = document.createElement("td");
-    tdFuel.textContent = data.fuel;
-    tr.appendChild(tdFuel);
-
-    const tdPrice = document.createElement("td");
-    tdPrice.textContent = `$${data.price}`;
-    tr.appendChild(tdPrice);
-
-    const tdCondition = document.createElement("td");
-    tdCondition.textContent = data.condition;
-    tr.appendChild(tdCondition);
-
-    const tdShift = document.createElement("td");
-    tdShift.textContent = data.shift;
-    tr.appendChild(tdShift);
-
-    const tdDif = document.createElement("td");
-    tdDif.textContent = data.dif;
-    tr.appendChild(tdDif);
+    const mezok = ["carbrand", "year", "hp", "fuel", "price", "condition", "shift", "dif"];
+    mezok.forEach(mezo => {
+      const td = document.createElement("td");
+      td.textContent = mezo === "price" ? `$${data[mezo]}` : data[mezo];
+      tr.appendChild(td);
+    });
 
     const tdDelete = document.createElement("td");
     const deleteButton = document.createElement("button");
@@ -75,19 +73,38 @@ const lista = (datas) => {
         alert("Hiba történt ...");
         return;
       }
-      lista(await loading());
+      aktualisAdatok = await loading();
+      lista(aktualisAdatok);
     });
 
-    tdDelete.appendChild(deleteButton);
-    tr.appendChild(tdDelete);
+    //tdDelete.appendChild(deleteButton);
+    //tr.appendChild(tdDelete);
 
     tbody.appendChild(tr);
   });
 
   tablazat.appendChild(tbody);
-  document.getElementById("adatmegjelenites").append(tablazat);
+  document.getElementById("adatmegjelenites").appendChild(tablazat);
 };
 
-document.getElementById("adatmegjelenites").innerText = "";
-lista(await loading());
-document.addEventListener("DOMContentLoaded", init);
+const rendezes = (mezo) => {
+  if (!rendezesIrany[mezo]) rendezesIrany[mezo] = 1;
+  else rendezesIrany[mezo] *= -1;
+
+  aktualisAdatok.sort((a, b) => {
+    const aErtek = typeof a[mezo] === 'string' ? a[mezo].toLowerCase() : a[mezo];
+    const bErtek = typeof b[mezo] === 'string' ? b[mezo].toLowerCase() : b[mezo];
+
+    if (aErtek < bErtek) return -1 * rendezesIrany[mezo];
+    if (aErtek > bErtek) return 1 * rendezesIrany[mezo];
+    return 0;
+  });
+
+  lista(aktualisAdatok);
+};
+
+
+document.addEventListener("DOMContentLoaded", async () => {
+  aktualisAdatok = await loading();
+  lista(aktualisAdatok);
+});
