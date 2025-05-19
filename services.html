@@ -7,6 +7,7 @@
   <title>Autókereskedő oldal</title>
   <link rel="stylesheet" href="src/style.css">
   <script type="module" src="src/main.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <style>
     table {
     font-family: arial, sans-serif;
@@ -23,24 +24,221 @@
     tr:nth-child(even) {
       background-color: #dddddd;
     }
+
+    img{
+      max-height: 250px;
+    }
+
+    #services-header {
+    background: linear-gradient(135deg, #1c1c1e, #343a40); /* dark gradient */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border-bottom: 4px solid #0d6efd;
+  }
+
+  #services-header h1 {
+    font-size: 2.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  #services-header p.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #dcdcdc;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 576px) {
+    #services-header h1 {
+      font-size: 2rem;
+    }
+
+    #services-header p.lead {
+      font-size: 1rem;
+    }
+  }
+
+  header {
+    background-color: #1c1c1e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-links li {
+    display: inline-block;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #ffffff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .nav-links a:hover {
+    background-color: #0d6efd;
+    color: #ffffff;
+  }
+
+  .nav-links .login a {
+    background-color: #0d6efd;
+    color: white;
+  }
+
+  .nav-links .login a:hover {
+    background-color: #0b5ed7;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
   </style>
 </head>
 
 <body>
   <header>
-    <nav>
-      <ul>
+    <nav class="navbar">
+      <ul class="nav-links">
         <li><a href="index.html">Kezdőlap</a></li>
         <li><a href="cars.html">Autók</a></li>
         <li><a href="services.html">Szolgáltatások</a></li>
         <li><a href="contact.html">Kapcsolat</a></li>
-        <li class="login"><a href="./loginreg/login.html">Bejelentkezés</a></li>
+        <li class="login "><a href="./loginreg/login.html">Bejelentkezés</a></li>
       </ul>
     </nav>
   </header>
 
+
+  <header class="text-white text-center py-5" id="services-header">
+  <h1>Szolgáltatásaink</h1>
+  <p class="lead">Minden, amire egy autónak szüksége van</p>
+</header>
+
+<main class="container py-5">
+    <div class="row g-4">
+
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card h-100">
+          
+            <div class="card" >
+            <img src="src/olajcsere.jpg" class="card-img-top" alt="olajcsere">
+              <div class="card-body">
+                <h5 class="card-title">Olajcsere</h5>
+                <p class="card-text">Gyors és hatékony olajcsere kiváló minőségű szintetikus vagy hagyományos olajokkal.</p>
+              </div>
+            </div>
+
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card h-100">
+
+          <div class="card" >
+            <img src="src/fekellenorzes.jpg" class="card-img-top" alt="olajcsere">
+              <div class="card-body">
+                <h5 class="card-title">Fékellenőrzés és -javítás</h5>
+                <p class="card-text">Gondoskodunk biztonságáról alapos fékellenőrzésekkel és megfizethető javítási lehetőségekkel.</p>
+              </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card h-100">
+          
+          <div class="card" >
+            <img src="src/motorellenorzes.jpg" class="card-img-top" alt="olajcsere">
+              <div class="card-body">
+                <h5 class="card-title">Motorellenőrzés</h5>
+                <p class="card-text">Világít a check engine lámpa? Modern eszközöket használunk a probléma gyors azonosítására és megoldására.</p>
+              </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card h-100">
+          
+          <div class="card" >
+            <img src="src/valto.jpg" class="card-img-top" alt="olajcsere">
+              <div class="card-body">
+                <h5 class="card-title">Váltó szolgáltatások</h5>
+                <p class="card-text">A folyadékcseréktől a teljes felújításokig mindent megteszünk, hogy sebességváltója zökkenőmentesen működjön.</p>
+              </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card h-100">
+          
+          <div class="card" >
+            <img src="src/gumiszerviz.jpg" class="card-img-top" alt="olajcsere">
+              <div class="card-body">
+                <h5 class="card-title">Gumiszerviz</h5>
+                <p class="card-text">Gumiszerelés, centrírozás jó áron, hogy biztonságosan közlekedhessen.</p>
+              </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-4">
+        <div class="service-card h-100">
+          
+          <div class="card" >
+            <img src="src/akkumulator.jpg" class="card-img-top" alt="olajcsere">
+              <div class="card-body">
+                <h5 class="card-title">Akkumulátor csere</h5>
+                <p class="card-text">Az akkumulátorokat teszteljük és cseréljük, hogy autója mindig beindulhasson.</p>
+              </div>
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+  </main>
+
   <footer>
-    <p>&copy; 2025 Autókereskedés</p>
+    <p>&copy; 2025 AutoPont</p>
   </footer>
 </body>
 
