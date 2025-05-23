@@ -81,8 +81,86 @@ footer p {
   background-color: #e6c200;
 }
 
-#terkep{
-  align-items: center;
+section.rolunk {
+  padding: 2rem;
+  background-color: var(--white);
+  text-align: center;
+}
+
+section.rolunk h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--black);
+  padding-top: 25px;
+}
+
+section.rolunk p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+section.terkep {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+section.terkep h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: var(--black);
+}
+
+#terkep {
+  display: flex;
   justify-content: center;
-  
+  align-items: center;
+}
+
+#terkep iframe {
+  width: 80%;
+  max-width: 900px;
+  height: 450px;
+  border: 2;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.rolunk {
+  background-image: url("../src/banner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--black);
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  height: 300px;
+  vertical-align: middle;
+}
+
+.rolunk::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 0;
+}
+
+.rolunk h2,
+.rolunk p {
+  position: relative;
+  z-index: 1;
+}
+
+.rolunk h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.rolunk p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
