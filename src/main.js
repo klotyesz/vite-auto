@@ -1,4 +1,4 @@
-const rendezesIrany = {}; // minden mezőhöz nyomon követjük
+const rendezesIrany = {};
 
 const loading = async () => {
   const response = await fetch("https://retoolapi.dev/U0LyEZ/data");
