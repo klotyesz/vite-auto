@@ -84,7 +84,6 @@ const lista = (datas) => {
     const tdShift = createSelectCell(data.shift, ["Manual", "Automatic"]);
     const tdDif = createSelectCell(data.dif, ["FWD", "RWD", "AWD"]);
 
-
     tr.appendChild(tdBrand);
     tr.appendChild(tdYear);
     tr.appendChild(tdHP);
@@ -153,3 +152,37 @@ const lista = (datas) => {
 };
 
 lista(await loading());
+
+const ujAutoGombContainer = document.getElementById("uj-auto-gomb-container");
+const ujAutoGomb = document.createElement("button");
+ujAutoGomb.className = "uj-auto-gomb";
+ujAutoGomb.textContent = "Új autó létrehozása";
+
+ujAutoGomb.addEventListener("click", async () => {
+  const ujAuto = {
+    carbrand: "Új márka",
+    year: "2025",
+    hp: "100",
+    fuel: "Petrol",
+    price: "0",
+    condition: 3,
+    shift: "Manual",
+    dif: "FWD"
+  };
+
+  const response = await fetch("https://retoolapi.dev/U0LyEZ/data", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(ujAuto)
+  });
+
+  if (!response.ok) {
+    showToast("Hiba történt az új autó létrehozásakor!", "error");
+    return;
+  }
+
+  showToast("Új autó sikeresen létrehozva!", "success");
+  lista(await loading());
+});
+
+ujAutoGombContainer.appendChild(ujAutoGomb);
