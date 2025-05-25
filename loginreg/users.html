@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felhasználók listája</title>
+  <link rel="stylesheet" href="../src/style.css">
+  <script type="module" src="felhasznalok.js"></script>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4caf50;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    .toast.error {
+      background-color: #f44336;
+    }
+
+    .toast.info {
+      background-color: #2196f3;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Kezdőlap</a></li>
+        <li><a href="welcome.html">Autók kezelése</a></li>
+
+        <li class="login"><a href="./login.html">Bejelentkezés</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section>
+    <div id="felhasznalok-lista"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Autókereskedés</p>
+  </footer>
+</body>
+
+</html>
